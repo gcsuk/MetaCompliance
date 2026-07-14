@@ -19,6 +19,9 @@ public class GetFishCountsTests
 
         var expectedContent = new List<ResponseModel>()
         {
+            new(Name: "Flounder", Count: 4, Date: "2023-09-11"),
+            new(Name: "Greater sandeel", Count: 3, Date: "2023-09-11"),
+            new(Name: "Herring", Count: 623, Date: "2023-09-11"),
             new(Name: "Flounder", Count: 3, Date: "2023-09-11"),
             new(Name: "Greater sandeel", Count: 2, Date: "2023-09-11"),
             new(Name: "Herring", Count: 2750, Date: "2023-09-11"),

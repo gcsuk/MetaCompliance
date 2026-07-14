@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5B820D37-3566-4CD7-8A94-DF8351D3AC1A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishCountsApi", "src\FishCountsApi\FishCountsApi.csproj", "{A187BC9E-57F3-4CFA-8DC2-B42E10A79F2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EAA65449-8931-4A63-B8D2-B46C20DECEAB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CE5B10DB-40E6-4774-9A25-53EBC14526A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishCountsUnitTests", "tests\FishCountsUnitTests\FishCountsUnitTests.csproj", "{46691F60-11E8-4A2D-847D-79BB0FA4CE93}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishCountsE2ETests", "tests\FishCountsE2ETests\FishCountsE2ETests.csproj", "{CA36F372-ACC2-4BED-B066-E1D2D6E09DF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A187BC9E-57F3-4CFA-8DC2-B42E10A79F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A187BC9E-57F3-4CFA-8DC2-B42E10A79F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A187BC9E-57F3-4CFA-8DC2-B42E10A79F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A187BC9E-57F3-4CFA-8DC2-B42E10A79F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46691F60-11E8-4A2D-847D-79BB0FA4CE93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46691F60-11E8-4A2D-847D-79BB0FA4CE93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46691F60-11E8-4A2D-847D-79BB0FA4CE93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46691F60-11E8-4A2D-847D-79BB0FA4CE93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA36F372-ACC2-4BED-B066-E1D2D6E09DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA36F372-ACC2-4BED-B066-E1D2D6E09DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA36F372-ACC2-4BED-B066-E1D2D6E09DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA36F372-ACC2-4BED-B066-E1D2D6E09DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A187BC9E-57F3-4CFA-8DC2-B42E10A79F2E} = {5B820D37-3566-4CD7-8A94-DF8351D3AC1A}
+		{46691F60-11E8-4A2D-847D-79BB0FA4CE93} = {CE5B10DB-40E6-4774-9A25-53EBC14526A2}
+		{CA36F372-ACC2-4BED-B066-E1D2D6E09DF3} = {CE5B10DB-40E6-4774-9A25-53EBC14526A2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF379B0A-6D99-49E2-AEC9-9FDAC8FA04B8}
+	EndGlobalSection
+EndGlobal

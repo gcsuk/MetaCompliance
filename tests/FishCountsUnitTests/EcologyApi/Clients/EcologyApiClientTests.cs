@@ -29,7 +29,7 @@ public class EcologyApiClientTests
     public async Task GetObservations_ReturnsExpectedResult_WhenQueryIsValid()
     {
         // Arrange
-        var query = new GetObservationsQueryModel(Date_from: "2021-01-02", Date_to: "2022-03-04");
+        var query = new GetObservationsQueryModel(Date_from: "2021-01-02", Date_to: "2022-03-04", Offset: 0, Limit: 50);
 
         var expectedResponse = new List<ObservationResponseModel>
         {
@@ -39,7 +39,25 @@ public class EcologyApiClientTests
 
         var responseContent = JsonSerializer.Serialize(expectedResponse);
 
-        _mockHttp.When("http://localhost/observations?date_from=2021-01-02&date_to=2022-03-04").Respond("application/json", responseContent);
+        _mockHttp.When("http://localhost/observations?date_from=2021-01-02&date_to=2022-03-04&skip=0&take=50").Respond("application/json", responseContent);
+
+        // Act
+        var result = await _ecologyApiClient.GetObservations(query);
+
+        // Assert
+        Assert.Equal(expectedResponse, result);
+    }
+
+    [Fact]
+    public async Task GetObservations_PassesOffsetAndLimitToDownstreamApi()
+    {
+        // Arrange
+        var query = new GetObservationsQueryModel(Date_from: "2021-01-02", Date_to: "2022-03-04", Offset: 20, Limit: 10);
+
+        var expectedResponse = new List<ObservationResponseModel>();
+        var responseContent = JsonSerializer.Serialize(expectedResponse);
+
+        _mockHttp.When("http://localhost/observations?date_from=2021-01-02&date_to=2022-03-04&skip=20&take=10").Respond("application/json", responseContent);
 
         // Act
         var result = await _ecologyApiClient.GetObservations(query);
@@ -52,9 +70,9 @@ public class EcologyApiClientTests
     public async Task GetObservations_ThrowsException_WhenApiReturnsNonSuccessStatusCode()
     {
         // Arrange
-        var query = new GetObservationsQueryModel(Date_from: "2021-01-02", Date_to: "2022-03-04");
+        var query = new GetObservationsQueryModel(Date_from: "2021-01-02", Date_to: "2022-03-04", Offset: 0, Limit: 50);
 
-        _mockHttp.When("http://localhost/observations?date_from=2021-01-02&date_to=2022-03-04").Respond(HttpStatusCode.BadRequest);
+        _mockHttp.When("http://localhost/observations?date_from=2021-01-02&date_to=2022-03-04&skip=0&take=50").Respond(HttpStatusCode.BadRequest);
 
         // Act and Assert
         var ex = await Assert.ThrowsAsync<Exception>(() => _ecologyApiClient.GetObservations(query));
@@ -66,9 +84,9 @@ public class EcologyApiClientTests
     public async Task GetObservations_ThrowsException_WhenJsonDeserialisationFails()
     {
         // Arrange
-        var query = new GetObservationsQueryModel(Date_from: "2021-01-02", Date_to: "2022-03-04");
+        var query = new GetObservationsQueryModel(Date_from: "2021-01-02", Date_to: "2022-03-04", Offset: 0, Limit: 50);
 
-        _mockHttp.When("http://localhost/observations?date_from=2021-01-02&date_to=2022-03-04").Respond("application/json", "badjson");
+        _mockHttp.When("http://localhost/observations?date_from=2021-01-02&date_to=2022-03-04&skip=0&take=50").Respond("application/json", "badjson");
 
         // Act and Assert
         var ex = await Assert.ThrowsAsync<JsonException>(() => _ecologyApiClient.GetObservations(query));

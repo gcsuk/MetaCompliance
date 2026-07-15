@@ -22,7 +22,9 @@ public class EcologyApiClient : IEcologyApiClient
             { "site_id", "http://environment.data.gov.uk/ecology/site/fish/20264" },
             { "site_id", "http://environment.data.gov.uk/ecology/site/fish/20696" },
             { "date_from", query.Date_from },
-            { "date_to", query.Date_to }
+            { "date_to", query.Date_to },
+            { "skip", query.Offset.ToString() },
+            { "take", query.Limit.ToString() },
         };
 
         var response = await _httpClient.GetAsync($"observations{queryBuilder}");

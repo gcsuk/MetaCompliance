@@ -10,6 +10,8 @@ public static class GetFishCountsQueryModelMapper
     {
         return new GetObservationsQueryModel(
             Date_from: input.StartDate?.ToString("o", CultureInfo.InvariantCulture) ?? "",
-            Date_to: input.EndDate?.ToString("o", CultureInfo.InvariantCulture) ?? "") ;
+            Date_to: input.EndDate?.ToString("o", CultureInfo.InvariantCulture) ?? "",
+            Offset: input.Offset,
+            Limit: input.Limit);
     }
 }

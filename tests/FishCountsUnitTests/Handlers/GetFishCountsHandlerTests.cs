@@ -45,4 +45,29 @@ public class GetFishCountsHandlerTests
         Assert.NotNull(result);
         Assert.Equivalent(expected, result);
     }
+
+    [Fact]
+    public async Task Handle_ShouldPassOffsetAndLimitToEcologyApiClient()
+    {
+        // Arrange
+        var query = new GetFishCountsQueryModel()
+        {
+            StartDate = new DateOnly(2021, 2, 3),
+            EndDate = new DateOnly(2023, 11, 12),
+            Offset = 20,
+            Limit = 10,
+        };
+        var ecologyQuery = GetFishCountsQueryModelMapper.ToGetObservationsQueryModel(query);
+
+        var ecologyApiClient = Substitute.For<IEcologyApiClient>();
+        ecologyApiClient.GetObservations(ecologyQuery).Returns(new List<ObservationResponseModel>());
+
+        var handler = new GetFishCountsHandler(ecologyApiClient);
+
+        // Act
+        await handler.Handle(query);
+
+        // Assert
+        await ecologyApiClient.Received(1).GetObservations(Arg.Is<GetObservationsQueryModel>(q => q.Offset == 20 && q.Limit == 10));
+    }
 }

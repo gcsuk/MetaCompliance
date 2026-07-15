@@ -2,4 +2,6 @@
 
 public record GetObservationsQueryModel(
     string Date_from,
-    string Date_to);
+    string Date_to,
+    int Offset,
+    int Limit);
